@@ -7,8 +7,8 @@
   <!-- Simple reset to clear default browser styles -->
   <style>
     * {
-      margin: 0; 
-      padding: 0; 
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
       font-family: sans-serif;
     }
@@ -25,23 +25,22 @@
       justify-content: center;
       color: #fff;
       text-align: center;
-      /* Mountain background from Pexels (free to use) */
       background: #333
         url('https://images.pexels.com/photos/66997/pexels-photo-66997.jpeg?auto=compress&cs=tinysrgb&w=1920')
-        no-repeat center center/cover;
-      overflow: hidden; /* so we can hide flying birds if they go off screen */
+        no-repeat center center / cover; /* Mountain background (Pexels) */
+      overflow: hidden; /* hides flying birds if they go off screen */
     }
 
-    /* Overlay for better text contrast */
+    /* Dark overlay to improve text contrast */
     .hero::before {
       content: "";
       position: absolute;
-      inset: 0; 
+      inset: 0;
       background: rgba(0, 0, 0, 0.4);
     }
 
     .hero-content {
-      position: relative; /* so it sits on top of the hero overlay */
+      position: relative; /* ensures it sits above the overlay */
       z-index: 2;
     }
 
@@ -59,13 +58,16 @@
     /* Bird Animation */
     .bird {
       position: absolute;
-      width: 60px; 
-      height: 60px; 
-      /* Bird silhouette (public domain) */
-      background: url('https://upload.wikimedia.org/wikipedia/commons/d/df/Birdsilhouette_0.png') no-repeat center/contain;
+      width: 60px;
+      height: 60px;
+      /* Bird silhouette (public domain). We'll invert it so it appears white. */
+      background: url('https://upload.wikimedia.org/wikipedia/commons/d/df/Birdsilhouette_0.png') 
+                  no-repeat center / contain;
       animation: fly linear infinite;
       z-index: 1;
-      opacity: 0.8; /* Slight transparency for effect */
+      /* Invert black silhouette -> white */
+      filter: invert(1);
+      opacity: 0.9;
     }
 
     /* Keyframe for bird flight across the screen */
@@ -81,7 +83,7 @@
       }
     }
 
-    /* Create multiple birds with different timings */
+    /* Multiple birds with staggered timings and positions */
     .bird.bird-1 {
       top: 40%;
       left: -15%;
@@ -117,9 +119,9 @@
   </style>
 </head>
 <body>
-  <!-- Hero Section with mountains background -->
+  <!-- Hero Section -->
   <div class="hero">
-    <!-- Flying birds -->
+    <!-- Birds -->
     <div class="bird bird-1"></div>
     <div class="bird bird-2"></div>
     <div class="bird bird-3"></div>
@@ -130,17 +132,20 @@
     </div>
   </div>
 
-  <!-- (Optional) Footer -->
+  <!-- Footer -->
   <footer>
-    &copy; <span id="year"></span> Neutrality Studies.<br>
+    &copy; <span id="year"></span> Neutrality Studies.
+    <br>
     Image credit: 
-    <a href="https://www.pexels.com" target="_blank">Pexels</a> |
-    Bird silhouette: 
-    <a href="https://commons.wikimedia.org/wiki/File:Birdsilhouette_0.png" target="_blank">Wikimedia Commons</a>
+    <a href="https://www.pexels.com" target="_blank">Pexels</a> | 
+    Bird silhouette:
+    <a href="https://commons.wikimedia.org/wiki/File:Birdsilhouette_0.png" target="_blank">
+      Wikimedia Commons
+    </a>
   </footer>
 
   <script>
-    // Update year in footer automatically
+    // Dynamically update footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
