@@ -25,8 +25,9 @@
       justify-content: center;
       color: #fff;
       text-align: center;
-      background: #333 
-        url('https://images.unsplash.com/photo-1540717346299-dc5533f8e06a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')
+      /* Mountain background from Pexels (free to use) */
+      background: #333
+        url('https://images.pexels.com/photos/66997/pexels-photo-66997.jpeg?auto=compress&cs=tinysrgb&w=1920')
         no-repeat center center/cover;
       overflow: hidden; /* so we can hide flying birds if they go off screen */
     }
@@ -60,9 +61,11 @@
       position: absolute;
       width: 60px; 
       height: 60px; 
-      background: url('https://upload.wikimedia.org/wikipedia/commons/2/2a/Free_Bird_Clip_Art_%287101%29.png') no-repeat center/contain;
+      /* Bird silhouette (public domain) */
+      background: url('https://upload.wikimedia.org/wikipedia/commons/d/df/Birdsilhouette_0.png') no-repeat center/contain;
       animation: fly linear infinite;
       z-index: 1;
+      opacity: 0.8; /* Slight transparency for effect */
     }
 
     /* Keyframe for bird flight across the screen */
@@ -129,14 +132,11 @@
 
   <!-- (Optional) Footer -->
   <footer>
-    &copy; <span id="year"></span> Neutrality Studies. 
-    <br>
+    &copy; <span id="year"></span> Neutrality Studies.<br>
     Image credit: 
-    <a href="https://unsplash.com/" target="_blank">Unsplash</a> | 
-    Bird icon: 
-    <a href="https://commons.wikimedia.org/wiki/File:Free_Bird_Clip_Art_(7101).png" target="_blank">
-      Wikimedia Commons
-    </a>
+    <a href="https://www.pexels.com" target="_blank">Pexels</a> |
+    Bird silhouette: 
+    <a href="https://commons.wikimedia.org/wiki/File:Birdsilhouette_0.png" target="_blank">Wikimedia Commons</a>
   </footer>
 
   <script>
