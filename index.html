@@ -1,11 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>My Homepage</title>
+  <meta charset="UTF-8" />
+  <title>Neutrality Studies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Simple reset to clear default browser styles -->
+  <style>
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+    body, html {
+      height: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      background: #333 
+        url('https://images.unsplash.com/photo-1540717346299-dc5533f8e06a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')
+        no-repeat center center/cover;
+      overflow: hidden; /* so we can hide flying birds if they go off screen */
+    }
+
+    /* Overlay for better text contrast */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0; 
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-content {
+      position: relative; /* so it sits on top of the hero overlay */
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    /* Bird Animation */
+    .bird {
+      position: absolute;
+      width: 60px; 
+      height: 60px; 
+      background: url('https://upload.wikimedia.org/wikipedia/commons/2/2a/Free_Bird_Clip_Art_%287101%29.png') no-repeat center/contain;
+      animation: fly linear infinite;
+      z-index: 1;
+    }
+
+    /* Keyframe for bird flight across the screen */
+    @keyframes fly {
+      0% {
+        transform: translateX(-10%) translateY(0%) scale(1) rotateY(180deg);
+      }
+      50% {
+        transform: translateX(50vw) translateY(-20vh) scale(1.1) rotateY(180deg);
+      }
+      100% {
+        transform: translateX(110vw) translateY(10vh) scale(1) rotateY(0deg);
+      }
+    }
+
+    /* Create multiple birds with different timings */
+    .bird.bird-1 {
+      top: 40%;
+      left: -15%;
+      animation-duration: 15s;
+    }
+    .bird.bird-2 {
+      top: 60%;
+      left: -10%;
+      animation-duration: 20s;
+      animation-delay: 3s;
+    }
+    .bird.bird-3 {
+      top: 30%;
+      left: -20%;
+      animation-duration: 18s;
+      animation-delay: 6s;
+    }
+
+    /* Footer (optional) */
+    footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      z-index: 2;
+      font-size: 0.8rem;
+    }
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is my placeholder index file. More to come soon!</p>
+  <!-- Hero Section with mountains background -->
+  <div class="hero">
+    <!-- Flying birds -->
+    <div class="bird bird-1"></div>
+    <div class="bird bird-2"></div>
+    <div class="bird bird-3"></div>
+
+    <div class="hero-content">
+      <h1>Neutrality Studies</h1>
+      <p>Exploring impartial perspectives</p>
+    </div>
+  </div>
+
+  <!-- (Optional) Footer -->
+  <footer>
+    &copy; <span id="year"></span> Neutrality Studies. 
+    <br>
+    Image credit: 
+    <a href="https://unsplash.com/" target="_blank">Unsplash</a> | 
+    Bird icon: 
+    <a href="https://commons.wikimedia.org/wiki/File:Free_Bird_Clip_Art_(7101).png" target="_blank">
+      Wikimedia Commons
+    </a>
+  </footer>
+
+  <script>
+    // Update year in footer automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
