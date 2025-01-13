@@ -4,34 +4,35 @@
   <meta charset="UTF-8" />
   <title>Neutrality Studies</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Simple reset to clear default browser styles -->
   <style>
+    /* Reset some default browser styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: sans-serif;
     }
-    body, html {
+    html, body {
       height: 100%;
     }
 
-    /* Hero Section */
+    /* Full-screen hero with mountain background */
     .hero {
       position: relative;
+      width: 100%;
       height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
       text-align: center;
+      color: #fff;
       background: #333
         url('https://images.pexels.com/photos/66997/pexels-photo-66997.jpeg?auto=compress&cs=tinysrgb&w=1920')
-        no-repeat center center / cover; /* Mountain background (Pexels) */
-      overflow: hidden; /* hides flying birds if they go off screen */
+        no-repeat center center / cover;
+      overflow: hidden; /* hide birds once they fly off screen */
     }
 
-    /* Dark overlay to improve text contrast */
+    /* Slight dark overlay for better text contrast */
     .hero::before {
       content: "";
       position: absolute;
@@ -40,10 +41,9 @@
     }
 
     .hero-content {
-      position: relative; /* ensures it sits above the overlay */
-      z-index: 2;
+      position: relative; /* above the overlay */
+      z-index: 2; /* ensures text is on top */
     }
-
     .hero h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
@@ -55,25 +55,27 @@
       opacity: 0.8;
     }
 
-    /* Bird Animation */
+    /* Birds */
     .bird {
       position: absolute;
       width: 60px;
       height: 60px;
-      /* Bird silhouette (public domain). We'll invert it so it appears white. */
-      background: url('https://upload.wikimedia.org/wikipedia/commons/d/df/Birdsilhouette_0.png') 
+      /* 
+         Base64-encoded PNG: a small black bird silhouette. 
+         We'll invert it to appear white.
+      */
+      background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAAByhM0FAAACNElEQVRYR+3Wz2tVURTH8c/ERSJCkxSB3Fi5i+eJVoqS6MYRAncVi9gITKOPGdjW3EZbKpMicAsi+B6Vv4BAQSiiBd45IjIoGwzOl3ZIEERHARydjg6RqiHvKf+fv2nTZt2sXf7hb09G3GhvQYGPXBwOdBKv0K6BjoAexBQm2APtgB2kB2kA2kA2kA2kA2kA2kA2kA2kA2sBDkVkgTClcAU6THrMBnobfA5WrgLzBYIbBODrYH2AIeA5m9SxVAx3ZJ7wOfkZ1WYNE8j9b2bo2Wy3ZVEOWbWNf6Nb3kStnAtub+XtI/SFoY/Ucj4AxRk1BPwWRskECusAxzAKUXAufbC6DNcCUe4AmiDxRY3AKawLFyxrBC9z4AE8AZoCL8y9/EIz9cCW4AtaAGG49CKAWsB98BzTcDNAvHflsVHtn3dwE9oeOcOvgr0Bw6VoZAQQAZuSgqto50sBEIHeJ4qlz9hECpCcO86A9OAeYAz4AXwEk0B2z5+tP/smka+1N7HIEh4B3+RfJTctDOfEBvohHfmRimVEh/AbnHk15ZioUzoaDqnhC/QDxTHzD2e2wAvhdF6bxlI4LB4VyBd9ZHkavpKUFZIhaTpaowG6J2d4goNo0TzOKN6fnJ2c8k5K/A2WxU7+3Vcw0MwHTXv92Rv4A8tf2FsTVdJkAAAAASUVORK5CYII=")
                   no-repeat center / contain;
-      animation: fly linear infinite;
+      animation: fly 15s linear infinite;
       z-index: 1;
-      /* Invert black silhouette -> white */
-      filter: invert(1);
+      filter: invert(1); /* invert black silhouette -> white */
       opacity: 0.9;
     }
 
-    /* Keyframe for bird flight across the screen */
+    /* Keyframes: move from left to right, with a slight vertical shift */
     @keyframes fly {
       0% {
-        transform: translateX(-10%) translateY(0%) scale(1) rotateY(180deg);
+        transform: translateX(-10%) translateY(0) scale(1) rotateY(180deg);
       }
       50% {
         transform: translateX(50vw) translateY(-20vh) scale(1.1) rotateY(180deg);
@@ -83,7 +85,7 @@
       }
     }
 
-    /* Multiple birds with staggered timings and positions */
+    /* Multiple birds, each with a different timing and start position */
     .bird.bird-1 {
       top: 40%;
       left: -15%;
@@ -119,9 +121,8 @@
   </style>
 </head>
 <body>
-  <!-- Hero Section -->
   <div class="hero">
-    <!-- Birds -->
+    <!-- Three birds, each flying at a different speed -->
     <div class="bird bird-1"></div>
     <div class="bird bird-2"></div>
     <div class="bird bird-3"></div>
@@ -132,20 +133,14 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
-    &copy; <span id="year"></span> Neutrality Studies.
-    <br>
-    Image credit: 
-    <a href="https://www.pexels.com" target="_blank">Pexels</a> | 
-    Bird silhouette:
-    <a href="https://commons.wikimedia.org/wiki/File:Birdsilhouette_0.png" target="_blank">
-      Wikimedia Commons
-    </a>
+    &copy; <span id="year"></span> Neutrality Studies.<br>
+    Background image: 
+    <a href="https://www.pexels.com" target="_blank">Pexels</a>
   </footer>
 
   <script>
-    // Dynamically update footer year
+    // Dynamically update the footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
